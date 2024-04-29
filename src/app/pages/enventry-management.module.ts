@@ -5,13 +5,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatButtonModule } from '@angular/material/button';
+import { OrderPlaceComponent } from './order-place/order-place.component';
+import { AddInvertoryComponent } from './add-invertory/add-invertory.component';
+import { StockComponent } from './stock/stock.component';
 const routes: Routes = [
-  { path: '', component: HomePageComponent },];
+  { path: '', component: HomePageComponent },
+  { path: 'order_processing', component: OrderPlaceComponent },
+  { path: 'add_inventory', component: AddInvertoryComponent },
+  { path: 'stock', component: OrderPlaceComponent },
+];
 
 
 @NgModule({
   declarations: [
-    HomePageComponent
+    HomePageComponent,
+    OrderPlaceComponent,
+    AddInvertoryComponent,
+    StockComponent
 
   ],
   imports: [

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './layout/layout.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar';
 const routes: Routes = [
   {
     path: '', component: LayoutComponent, children: [
@@ -21,8 +21,8 @@ const routes: Routes = [
     LayoutComponent
   ],
   imports: [
-    CommonModule,
     RouterModule.forChild(routes),
+    MatToolbarModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [

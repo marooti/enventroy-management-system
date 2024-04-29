@@ -1,2 +1,30 @@
+<p class="shadow-1 header w-full">
+    <mat-toolbar>
+        <div class="col-12 p-0 flex">
+            <div class="col-6 p-0 m-auto">
+                <span routerLink="/"> <i class="pi pi-home text-red-500 text-xl mr-2"></i>Inventory System</span>
+            </div>
+            <div class="col-6 p-0 flex">
+                <div class="flex col-12">
+                    <div class="col-4">
+                        <i class="pi pi-cart-plus text-2lg m-auto text-red-500"></i> <span class="px-2 text-sm cursor-pointer" routerLink="order_processing">Order processing</span>
+                    </div>
+                    <div class="col-4">
+                        <i class="pi pi-list-check text-2lg m-auto text-red-500"></i><span class="px-2 text-sm" routerLink="add_inventory">
+                            Add inventory
+                        </span>
+                    </div>
+                    <div class="col-4">
+                        <i class=" pi pi-file-check text-2lg m-auto text-red-500"></i><span class="px-2 text-sm" routerLink="stock">
+                            Stock
+                        </span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </mat-toolbar>
+</p>
+
 <p>layout works!</p>
 <router-outlet></router-outlet>
