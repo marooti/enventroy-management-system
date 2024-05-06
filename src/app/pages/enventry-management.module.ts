@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { OrderPlaceComponent } from './order-place/order-place.component';
 import { AddInvertoryComponent } from './add-invertory/add-invertory.component';
 import { StockComponent } from './stock/stock.component';
+import { TotalOrdersComponent } from './total-orders/total-orders.component';
+import { TableModule } from 'primeng/table';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'order_processing', component: OrderPlaceComponent },
@@ -21,7 +23,8 @@ const routes: Routes = [
     HomePageComponent,
     OrderPlaceComponent,
     AddInvertoryComponent,
-    StockComponent
+    StockComponent,
+    TotalOrdersComponent
 
   ],
   imports: [
@@ -29,7 +32,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ButtonModule,
     MatDatepickerModule,
-    MatButtonModule
-  ]
+    MatButtonModule,
+    TableModule
+  ],
 })
 export class EnventryManagementModule { }

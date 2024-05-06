@@ -10,12 +10,12 @@
                         <i class="pi pi-cart-plus text-2lg m-auto text-red-500"></i> <span class="px-2 text-sm cursor-pointer" routerLink="order_processing">Order processing</span>
                     </div>
                     <div class="col-4">
-                        <i class="pi pi-list-check text-2lg m-auto text-red-500"></i><span class="px-2 text-sm" routerLink="add_inventory">
+                        <i class="pi pi-list-check text-2lg m-auto text-red-500"></i><span class="px-2 text-sm cursor-pointer" routerLink="add_inventory">
                             Add inventory
                         </span>
                     </div>
                     <div class="col-4">
-                        <i class=" pi pi-file-check text-2lg m-auto text-red-500"></i><span class="px-2 text-sm" routerLink="stock">
+                        <i class=" pi pi-file-check text-2lg m-auto text-red-500"></i><span class="px-2 text-sm cursor-pointer" routerLink="stock">
                             Stock
                         </span>
                     </div>
@@ -26,5 +26,6 @@
     </mat-toolbar>
 </p>
 
-<p>layout works!</p>
-<router-outlet></router-outlet>
+<div class="mt-8">
+    <router-outlet></router-outlet>
+</div>
