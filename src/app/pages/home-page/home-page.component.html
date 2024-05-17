@@ -1,62 +1,103 @@
 <div class="col-11 m-auto">
-  <div class="col-12 flex gap-2">
-    <div class="left-dashboard col-3">
+  <div class="col-12 flex flex-wrap  gap-2">
+    <div class="left-dashboard lg:col-3 md:col-3 col-12">
       <!-- First-container -->
-      <div class="shadow-2 border-round-lg p-3 bg-white">
+      <div class="shadow-2 border-round-lg p-3 bg-red-600">
         <div class="flex justify-content-between">
-          <div>
-            Orders
+          <div class="text-white">
+            Total Customer
           </div>
           <div>
-            <i class="pi pi-shopping-cart"></i>
+            <i class="pi pi-shopping-cart text-white"></i>
           </div>
         </div>
         <div class="my-3">
-          <span class="text-xl font-medium">26</span>
-        </div>
-        <div class="mb-3">
-          <span class="text-lg font-medium text-red-500">23 </span> <span>Today Orders</span>
+          <span class="text-xl font-medium text-white">26</span>
         </div>
       </div>
       <!-- Second-container -->
-      <div class="shadow-2 border-round-lg p-3 bg-white mt-3">
+      <div class="shadow-2 border-round-lg p-3 bg-green-500 mt-3">
         <div class="flex justify-content-between">
-          <div>
-            Orders
+          <div class="text-white">
+            Total Suppilers
           </div>
           <div>
-            <i class="pi pi-shopping-cart"></i>
+            <i class="pi pi-shopping-cart text-white"></i>
           </div>
         </div>
         <div class="my-3">
-          <span class="text-xl font-medium">26</span>
-        </div>
-        <div class="mb-3">
-          <span class="text-lg font-medium text-red-500">23 </span> <span>Today Orders</span>
+          <span class="text-xl font-medium text-white">26</span>
         </div>
       </div>
 
       <!-- Third-container -->
-      <div class="shadow-2 border-round-lg p-3 bg-white mt-3">
+      <div class="shadow-2 border-round-lg p-3 bg-blue-400 mt-3">
         <div class="flex justify-content-between">
-          <div>
-            Orders
+          <div class="text-white">
+            Total Sells
           </div>
           <div>
+            <i class="pi pi-shopping-cart text-white"></i>
+          </div>
+        </div>
+        <div class="my-3">
+          <span class="text-xl font-medium text-white">26</span>
+        </div>
+      </div>
+
+      <!-- Third-container -->
+      <div class="shadow-2 border-round-lg p-3 surface-600 mt-3">
+        <div class="flex justify-content-between">
+          <div class="text-white">
+            Total Purchase
+          </div>
+          <div class="text-white">
             <i class="pi pi-shopping-cart"></i>
           </div>
         </div>
         <div class="my-3">
-          <span class="text-xl font-medium">26</span>
-        </div>
-        <div class="mb-3">
-          <span class="text-lg font-medium text-red-500">23 </span> <span>Today Orders</span>
+          <span class="text-xl font-medium text-white">26</span>
         </div>
       </div>
 
     </div>
-    <div class="right-dashboard col-9 shadow-2 bg-white border-round-lg">
-      <app-total-orders></app-total-orders>
+
+    <div class="lg:col-9 md:col-9 col-12">
+      <div class="col-12 flex gap-2 p-0">
+        <div class="shadow-2 col-6 border-round-lg p-0 p-3 text-center bg-green-700">
+          <div>
+            <span class="text-white">
+              Today
+            </span>
+          </div>
+          <div>
+            <span class="text-white">
+              Sell: 120
+            </span>
+          </div>
+          <div class="text-white">
+            Buy: 120
+          </div>
+        </div>
+          <div class="shadow-2 col-6 border-round-lg p-3 text-center bg-blue-700">
+            <div>
+              <span class="text-white">
+                Monthly
+              </span>
+            </div>
+            <div>
+              <span class="text-white">
+                Sell: 120
+              </span>
+            </div>
+            <div class="text-white">
+              Buy: 120
+            </div>
+        </div>
+      </div>
+      <div class="right-dashboard col-12 p-0 shadow-2 bg-white border-round-lg mt-4">
+        <app-total-orders></app-total-orders>
+      </div>
     </div>
   </div>
 
