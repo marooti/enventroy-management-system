@@ -2,6 +2,25 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
+
 .mat-typography {
     background-color: rgb(245, 242, 242);
+}
+
+input {
+    padding: 8px 8px;
+    border-radius: 5px;
+    width: 100%;
+    border: 1px solid rgb(53, 52, 52);
+}
+
+:host::ng-deep {
+    .p-dialog .p-dialog-header {
+        border-bottom: 0 none;
+        background: #ffffff;
+        color: #343a40;
+        padding: 0.5rem !important;
+        border-top-right-radius: 6px;
+        border-top-left-radius: 6px;
+    }
 }

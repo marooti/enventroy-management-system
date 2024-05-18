@@ -10,6 +10,11 @@ import { AddInvertoryComponent } from './add-invertory/add-invertory.component';
 import { StockComponent } from './stock/stock.component';
 import { TotalOrdersComponent } from './total-orders/total-orders.component';
 import { TableModule } from 'primeng/table';
+import { AddCustomerComponent } from './add-customer/add-customer.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'order_processing', component: OrderPlaceComponent },
@@ -24,7 +29,8 @@ const routes: Routes = [
     OrderPlaceComponent,
     AddInvertoryComponent,
     StockComponent,
-    TotalOrdersComponent
+    TotalOrdersComponent,
+    AddCustomerComponent
 
   ],
   imports: [
@@ -33,7 +39,10 @@ const routes: Routes = [
     ButtonModule,
     MatDatepickerModule,
     MatButtonModule,
-    TableModule
+    TableModule,
+    ReactiveFormsModule,
+    DialogModule,
+    ToastModule
   ],
 })
 export class EnventryManagementModule { }

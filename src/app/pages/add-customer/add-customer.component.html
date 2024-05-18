@@ -1,0 +1,86 @@
+<div [ngClass]="{'dull-bg': loading}">
+
+    <div class="py-2 pr-1 flex">
+        <div class="col-6 m-auto">
+            <span class="text-lg font-medium">All Customers</span>
+        </div>
+        <div class="justify-content-end flex col-6">
+            <button class="px-3 py-2 border-round-lg bg-orange-500 border-orange-500 text-white" (click)="showDialog()">
+                Add new Customer
+            </button>
+        </div>
+
+    </div>
+    <p-table #myTab [value]="data" [scrollable]="true" scrollHeight="320px" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>
+                    Client Name
+                    <input pInputText type="text" class="mt-1" placeholder="Search by name"
+                        (input)="applyFilter($event, 'clientName', 'contains', myTab)">
+                </th>
+                <th>
+                    Phone No
+                    <input pInputText type="text" class="mt-1" placeholder="Search by address"
+                        (input)="applyFilter($event, 'phone', 'contains', myTab)">
+                </th>
+                <th>
+                    Address
+                    <input pInputText type="text" class="mt-1" placeholder="Search by address"
+                        (input)="applyFilter($event, 'address', 'contains', myTab)">
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-people>
+            <tr>
+                <td>{{ people?.clientName }}</td>
+                <td>{{ people?.phone }}</td>
+                <td>{{ people?.address }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+    <p-dialog header="Add New Customer" (onHide)="notShowing()" [modal]="true" [(visible)]="visible"
+        [style]="{ width: '20rem' }">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <!-- Cancel & save button  -->
+            <div class="col-12 flex flex-wrap justify-content-end">
+                <div class="pt-2 w-full">
+                    <label>Name</label>
+                    <div class="mt-1">
+                        <input type="text" pInputText placeholder="Enter name" formControlName="clientName" />
+                    </div>
+                </div>
+                <div class="pt-2 w-full">
+                    <label>Phone</label>
+                    <div class="mt-1">
+                        <input type="text" pInputText placeholder="Enter phone no" formControlName="phone" />
+                    </div>
+                </div>
+                <div class="pt-2 w-full">
+                    <label>Address</label>
+                    <div class="mt-1">
+                        <input type="text" pInputText placeholder="Enter address" formControlName="address" />
+                    </div>
+                </div>
+                <div class="flex justify-content-between mt-4 gap-2 w-100">
+                    <button class="px-3 py-2 border-round-lg bg-white border-900 text-900" type="reset"
+                        (click)="notShowing()" style="width: 120px;">
+                        Cancel
+                    </button>
+                    <div class="updateBtn " style="width: 140px;">
+                        <button type="submit"
+                            class="px-3 py-2 border-round-lg bg-orange-500 border-orange-500 text-white"
+                            style="width: 120px;">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </p-dialog>
+
+</div>
+<p-toast></p-toast>
