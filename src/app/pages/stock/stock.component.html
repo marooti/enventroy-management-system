@@ -1,1 +1,123 @@
-<p class="mt-8">stock works!</p>
+<div class="lg:col-11 md:col-11 col-12 m-auto" [ngClass]="{'dull-bg': loading}">
+
+    <div class="py-2 pr-1 flex">
+        <div class="col-6 m-auto">
+            <span class="text-lg font-medium">All Stock</span>
+        </div>
+        <div class="justify-content-end flex col-6">
+            <button class="px-3 py-2 border-round-lg bg-orange-500 border-orange-500 text-white cursor-pointer " (click)="showDialog()">
+                Add New Stock
+            </button>
+        </div>
+
+    </div>
+    <p-table #myTab [value]="data" [scrollable]="true" scrollHeight="320px" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>
+                    Client Name
+                    <input pInputText type="text" class="mt-1" placeholder="Search by name"
+                        (input)="applyFilter($event, 'clientName', 'contains', myTab)">
+                </th>
+                <th>
+                    Phone No
+                    <input pInputText type="text" class="mt-1" placeholder="Search by address"
+                        (input)="applyFilter($event, 'phone', 'contains', myTab)">
+                </th>
+                <th>
+                    Address
+                    <input pInputText type="text" class="mt-1" placeholder="Search by address"
+                        (input)="applyFilter($event, 'address', 'contains', myTab)">
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-people>
+            <tr>
+                <td>{{ people?.clientName }}</td>
+                <td>{{ people?.phone }}</td>
+                <td>{{ people?.address }}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+
+
+    <p-dialog header="Add New Stock" (onHide)="notShowing()" [modal]="true" [(visible)]="visible"
+        [breakpoints]="{'800px': '80vw','650px': '98vw'}" [style]="{width: '50vw'}">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <!-- Cancel & save button  -->
+            <div class="col-12 flex flex-wrap justify-content-end p-0">
+                <div class="col-12 flex flex-wrap p-0">
+                    <div class="pt-2 md:col-6 lg:col-6 col-12">
+                        <label>Company Name</label>
+                        <div class="mt-1">
+                            <input type="text" pInputText placeholder="Enter name" formControlName="companyName" />
+                        </div>
+                    </div>
+                    <div class="pt-2 lg:col-6 md:col-6 col-12 ">
+                        <label>Item Name</label>
+                        <div class="mt-1">
+                            <input type="text" pInputText placeholder="Enter name" formControlName="itemName" />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 flex flex-wrap p-0">
+                    <div class="pt-2 md:col-6 lg:col-6 col-12">
+                        <label>Company Phone No</label>
+                        <div class="mt-1">
+                            <input type="text" pInputText placeholder="Enter name" formControlName="phoneNo" />
+                        </div>
+                    </div>
+                    <div class="pt-2 lg:col-6 md:col-6 col-12 ">
+                        <label>Date</label>
+                        <div class="mt-1">
+                            <p-calendar formControlName="date" placeholder="Select date" [touchUI]="true"></p-calendar>
+                        </div>
+                    </div>
+                </div>
+                <div class="pt-2 col-12 ">
+                    <label>Description</label>
+                    <div class="mt-1">
+                        <textarea pInputTextarea placeholder="Description" class="w-full"
+                            formControlName="description"></textarea>
+                    </div>
+                </div>
+                <div class="col-12 flex flex-wrap p-0">
+                    <div class="pt-2 md:col-4 lg:col-4 col-12">
+                        <label>Quntity</label>
+                        <div class="mt-1">
+                            <input type="text" pInputText placeholder="Enter name" formControlName="quntity" />
+                        </div>
+                    </div>
+                    <div class="pt-2 lg:col-4 md:col-4 col-12 ">
+                        <label>Unit Price</label>
+                        <div class="mt-1">
+                            <input type="text" pInputText placeholder="Enter name" formControlName="unitPrice"  />
+                        </div>
+                    </div>
+                    <div class="pt-2 lg:col-4 md:col-4 col-12 ">
+                        <label>Total</label>
+                        <div class="mt-1">
+                            <input type="text" pInputText placeholder="Enter name" formControlName="total" readonly/>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-content-between mt-4 gap-2 w-100">
+                    <button class="px-3 py-2 border-round-lg bg-white border-900 text-900" type="reset"
+                        (click)="notShowing()" style="width: 120px;">
+                        Cancel
+                    </button>
+                    <div class="updateBtn " style="width: 140px;">
+                        <button type="submit"
+                            class="px-3 py-2 border-round-lg bg-orange-500 border-orange-500 text-white"
+                            style="width: 120px;">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </p-dialog>
+
+</div>
+<p-toast></p-toast>

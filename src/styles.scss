@@ -24,3 +24,28 @@ input {
         border-top-left-radius: 6px;
     }
 }
+
+:host::ng-deep {
+    .p-calendar {
+        width: 100% !important;
+        padding: 1px !important;
+        height: 36px !important;
+
+    }
+
+    .p-inputtext {
+        color: #000000;
+        border: 1px solid #000000;
+    }
+
+    .p-inputtext:enabled:hover {
+        border-color: #000000;
+    }
+
+    .p-inputtext:enabled:focus {
+        outline: 0 none;
+        outline-offset: 0;
+        box-shadow: 0 0 0 0.2rem #ffffff;
+        border-color: #080808;
+    }
+}
