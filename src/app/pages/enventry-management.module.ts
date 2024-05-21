@@ -16,6 +16,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { CalendarModule } from 'primeng/calendar';
+import { MatMenuModule } from '@angular/material/menu';
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'order_processing', component: OrderPlaceComponent },
@@ -45,7 +46,8 @@ const routes: Routes = [
     DialogModule,
     ToastModule,
     InputTextareaModule,
-    CalendarModule
+    CalendarModule,
+    MatMenuModule
   ],
 })
 export class EnventryManagementModule { }

@@ -13,6 +13,9 @@ export class StockComponent {
   data: any[] = [];
   visible: boolean = false;
   loading: boolean = false;
+  quantity: any;
+  unitPrice: any;
+  totalPrice: any;
   cols: any[] = [
     { field: "clientName", header: "Client Name" },
     { field: "phone", header: "Phone No" },
@@ -41,7 +44,7 @@ export class StockComponent {
       description: [],
       quntity: [],
       unitPrice: [],
-      total: []
+      totalPrice: []
     })
   }
   submit() {
@@ -64,7 +67,7 @@ export class StockComponent {
   getData() {
 
     // Get the current client data
-    this.http.get('https://enventrysystem-default-rtdb.firebaseio.com/client.json').subscribe(
+    this.http.get('https://enventrysystem-default-rtdb.firebaseio.com/stock.json').subscribe(
       (data: any) => {
         this.data = data;
         console.log("Data :", this.data);
@@ -105,8 +108,15 @@ export class StockComponent {
   showSecondary() {
     this.messageService.add({ severity: 'secondary', summary: 'Secondary', detail: 'Message Content' });
   }
-
-  onSearchChange(searchValue: any) {
-    console.log(searchValue);
+  calculateTotal() {
+    console.log("Quntity", this.quantity, "Unit Price:", this.unitPrice);
+    this.totalPrice = this.quantity * this.unitPrice;
+    this.form.get('totalPrice')?.setValue(this.totalPrice)
   }
+
+  // Clear Filter method
+  closeFilter() {
+    this.getData();
+  }
+
 }

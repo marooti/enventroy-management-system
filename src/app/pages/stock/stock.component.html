@@ -5,38 +5,59 @@
             <span class="text-lg font-medium">All Stock</span>
         </div>
         <div class="justify-content-end flex col-6">
-            <button class="px-3 py-2 border-round-lg bg-orange-500 border-orange-500 text-white cursor-pointer " (click)="showDialog()">
+            <button class="px-2 py-2 border-round-lg bg-orange-500 border-orange-500 text-white cursor-pointer  mr-2"
+                [matMenuTriggerFor]="beforeMenu">
+                <i class="pi pi-sliders-h"></i>
+            </button>
+            <button class="px-3 py-2 border-round-lg bg-orange-500 border-orange-500 text-white cursor-pointer "
+                (click)="showDialog()">
                 Add New Stock
             </button>
         </div>
 
     </div>
-    <p-table #myTab [value]="data" [scrollable]="true" scrollHeight="320px" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table #myTab [value]="data" [scrollable]="true" scrollHeight="320px" [tableStyle]="{ 'min-width': '75rem' }">
         <ng-template pTemplate="header">
             <tr>
-                <th>
-                    Client Name
-                    <input pInputText type="text" class="mt-1" placeholder="Search by name"
-                        (input)="applyFilter($event, 'clientName', 'contains', myTab)">
+                <th style="width: 15% !important" class="text-center">
+                    Company Name
                 </th>
-                <th>
+                <th style="width: 15% !important" class="text-center">
+                    Item Name
+
+                </th>
+                <th style="width: 15% !important" class="text-center">
                     Phone No
-                    <input pInputText type="text" class="mt-1" placeholder="Search by address"
-                        (input)="applyFilter($event, 'phone', 'contains', myTab)">
+
                 </th>
-                <th>
-                    Address
-                    <input pInputText type="text" class="mt-1" placeholder="Search by address"
-                        (input)="applyFilter($event, 'address', 'contains', myTab)">
+                <th style="width: 14% !important" class="text-center">
+                    Date
+                </th>
+                <th style="width: 8% !important" class="text-center">
+                    Quntity
+                </th>
+                <th style="width: 9% !important" class="text-center">
+                    Unit Price
+                </th>
+                <th style="width: 9% !important" class="text-center">
+                    Total Price
+                </th>
+                <th style="width: 15% !important" class="text-center">
+                    Description
                 </th>
             </tr>
         </ng-template>
 
         <ng-template pTemplate="body" let-people>
             <tr>
-                <td>{{ people?.clientName }}</td>
-                <td>{{ people?.phone }}</td>
-                <td>{{ people?.address }}</td>
+                <td class="text-center">{{ people?.companyName }}</td>
+                <td class="text-center">{{ people?.itemName }}</td>
+                <td class="text-center">{{ people?.phoneNo }}</td>
+                <td class="text-center">{{ people?.date | date:'mediumDate'}}</td>
+                <td class="text-center">{{ people?.quntity }}</td>
+                <td class="text-center">{{ people?.unitPrice }}</td>
+                <td class="text-center">{{ people?.totalPrice }}</td>
+                <td class="text-center">{{ people?.description }}</td>
             </tr>
         </ng-template>
     </p-table>
@@ -86,19 +107,22 @@
                     <div class="pt-2 md:col-4 lg:col-4 col-12">
                         <label>Quntity</label>
                         <div class="mt-1">
-                            <input type="text" pInputText placeholder="Enter name" formControlName="quntity" />
+                            <input type="text" pInputText placeholder="Enter name" [(ngModel)]="quantity" required
+                                formControlName="quntity" />
                         </div>
                     </div>
                     <div class="pt-2 lg:col-4 md:col-4 col-12 ">
                         <label>Unit Price</label>
                         <div class="mt-1">
-                            <input type="text" pInputText placeholder="Enter name" formControlName="unitPrice"  />
+                            <input type="text" pInputText placeholder="Enter name" [(ngModel)]="unitPrice"
+                                formControlName="unitPrice" (input)="calculateTotal()" />
                         </div>
                     </div>
                     <div class="pt-2 lg:col-4 md:col-4 col-12 ">
                         <label>Total</label>
                         <div class="mt-1">
-                            <input type="text" pInputText placeholder="Enter name" formControlName="total" readonly/>
+                            <input type="text" pInputText placeholder="Enter name" formControlName="totalPrice"
+                                readonly />
                         </div>
                     </div>
                 </div>
@@ -120,4 +144,37 @@
     </p-dialog>
 
 </div>
+
+<!-- Filter menu Here -->
+<mat-menu #beforeMenu="matMenu" xPosition="before">
+    <div class=" lg:p-2 md:p-2 px-2 gap-2">
+        <div>
+            <input pInputText type="text" class="mt-1" placeholder="Search by companyName"
+                (input)="applyFilter($event, 'companyName', 'contains', myTab)" (click)="$event.stopPropagation()">
+        </div>
+        <div class="mt-2">
+            <input pInputText type="text" class="mt-1" placeholder="Search by item name"
+                (input)="applyFilter($event, 'itemName', 'contains', myTab)" (click)="$event.stopPropagation()">
+        </div>
+
+        <div class="mt-2">
+            <input pInputText type="text" class="mt-1" placeholder="Search by phone no"
+                (input)="applyFilter($event, 'phoneNo', 'contains', myTab)" (click)="$event.stopPropagation()">
+        </div>
+        <!-- Filter Button -->
+        <div class="gap-2 p-2 flex mt-2">
+            <div>
+                <button class="clear-btn" (click)="closeFilter()">
+                    Clear All
+                </button>
+            </div>
+            <div>
+                <button class="apply-btn" (click)="$event.stopPropagation()">
+                    Apply
+                </button>
+            </div>
+        </div>
+    </div>
+</mat-menu>
+
 <p-toast></p-toast>
